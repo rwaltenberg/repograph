@@ -1,0 +1,20 @@
+{
+  "name": "repograph",
+  "version": "0.1.0",
+  "description": "Generate and maintain knowledge vaults for codebases so coding agents work better. Conversation-driven generator + auto-activating consumer skill + drift-detection verify command.",
+  "author": {
+    "name": "rwaltenberg"
+  },
+  "homepage": "https://github.com/rwaltenberg/repograph",
+    "repository": {
+    "type": "git",
+    "url": "https://github.com/rwaltenberg/repograph.git"
+  },
+  "skills": [
+    "skills/generate-repograph",
+    "skills/using-repograph"
+  ],
+  "commands": [
+    "commands/repograph-verify.md"
+  ]
+}
