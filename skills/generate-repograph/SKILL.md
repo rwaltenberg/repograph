@@ -40,7 +40,7 @@ For every concept, invariant, domain MOC, and task stub you emit:
 
    Use a bash command. Example for a line range:
    ```bash
-   sed -n '42,68p' route-builder-web/src/stores/dataStore.ts \
+   sed -n '42,68p' src/stores/data-store.ts \
      | sed 's/[[:space:]]*$//' \
      | cat -s \
      | sha256sum | cut -d' ' -f1

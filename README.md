@@ -59,4 +59,4 @@ Method rationale: [`docs/method.md`](docs/method.md).
 
 ## Status
 
-V0.1 — built during rwaltenberg's AI Sprint (April 2026). Reference implementation: the Route Builder vault under `route-builder-web/.repograph/`. Known non-goals in `docs/vault-spec.md#non-goals`.
+V0.1 — first release, April 2026. Known non-goals and intentional cuts are documented in [`docs/vault-spec.md`](docs/vault-spec.md#non-goals). Contributions welcome; see the method rationale for design intent before proposing structural changes.
