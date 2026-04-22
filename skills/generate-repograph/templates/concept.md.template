@@ -1,0 +1,57 @@
+---
+id: {{id}}
+title: {{title}}
+domain: {{domain}}
+status: {{status}}
+source_files:
+{{#each source_files}}
+  - path: {{path}}
+    {{#if symbol}}symbol: {{symbol}}{{/if}}
+    {{#if line_range}}line_range: {{line_range}}{{/if}}
+    hash: sha256:{{hash}}
+{{/each}}
+related:
+{{#each related}}
+  - {{id}}
+{{/each}}
+last_checked: {{last_checked}}
+contributors:
+{{#each contributors}}
+  - name: {{name}}
+    date: {{date}}
+    role: {{role}}
+{{/each}}
+---
+
+# {{title}}
+
+## What it is
+
+{{one_sentence_summary}}
+
+{{paragraph_body}}
+
+## Shape
+
+{{types_and_interfaces_with_citations}}
+
+## How it's used
+
+{{usage_examples}}
+
+## Invariants
+
+{{#each invariants}}
+- [[invariants/{{id}}]]
+{{/each}}
+
+## Related
+
+- Upstream: {{#each upstream}}[[concepts/{{id}}]]{{#unless @last}}, {{/unless}}{{/each}}
+- Downstream: {{#each downstream}}[[concepts/{{id}}]]{{#unless @last}}, {{/unless}}{{/each}}
+
+{{#if historical_context}}
+## Historical context
+
+{{historical_context}}
+{{/if}}

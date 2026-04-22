@@ -1,0 +1,31 @@
+<!-- Template placeholders use {{...}} syntax. The generator fills these from interview answers and code reading. -->
+
+# {{repo_title}}
+
+{{repo_one_paragraph_description}}
+
+## Domains
+
+{{#each domains}}
+- [[domains/{{id}}]] — {{one_line_description}}
+{{/each}}
+
+## Start here for common tasks
+
+{{#each tasks}}
+- [[tasks/{{id}}]] — {{title}}
+{{/each}}
+
+## Invariants at a glance
+
+{{#each invariants_sorted_by_severity}}
+- [[invariants/{{id}}]] — **[{{kind}}]** {{one_line_statement}}
+{{/each}}
+
+## How to navigate this vault
+
+- Read this hub first. Load concept docs on demand via the wiki-links, not eagerly.
+- For tasks that span 3+ concepts, spawn one subagent per concept with isolated context; collect summaries back before acting.
+- `[never]` and `[must]` invariants are hard constraints. If you think you need to violate one, stop and ask.
+- If you encounter `[unverified]`, `[needs-review]`, or `TODO: verify with <role>` markers, surface them to the user instead of guessing.
+- If current code contradicts what this vault says, flag it — don't pretend. Suggest a patch or run `/repograph-verify`.

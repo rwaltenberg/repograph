@@ -1,0 +1,32 @@
+---
+id: {{id}}
+title: {{title}}
+contributors:
+{{#each contributors}}
+  - name: {{name}}
+    date: {{date}}
+    role: {{role}}
+{{/each}}
+---
+
+# {{title}}
+
+{{paragraph_description}}
+
+## Concepts
+
+{{#each concepts}}
+- [[concepts/{{id}}]] — {{one_line_description}}
+{{/each}}
+
+## Invariants
+
+{{#each invariants}}
+- [[invariants/{{id}}]] — **[{{kind}}]** {{one_line_statement}}
+{{/each}}
+
+## Common tasks
+
+{{#each tasks}}
+- [[tasks/{{id}}]] — {{title}}
+{{/each}}

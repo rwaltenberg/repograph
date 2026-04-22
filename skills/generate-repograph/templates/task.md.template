@@ -1,0 +1,34 @@
+---
+id: {{id}}
+title: {{title}}
+applies_to:
+{{#each domains}}
+  - {{id}}
+{{/each}}
+---
+
+# {{title}}
+
+{{paragraph_description}}
+
+## Prerequisites
+
+{{#each prereq_concepts}}
+- Read [[concepts/{{id}}]]
+{{/each}}
+
+## Steps
+
+{{#each steps}}
+{{@index_plus_1}}. {{description}}
+   - Files: {{files}}
+   - Honor: {{#each invariants}}[[invariants/{{id}}]]{{#unless @last}}, {{/unless}}{{/each}}
+{{/each}}
+
+## Verify
+
+{{verification_steps}}
+
+## Common gotchas
+
+{{gotchas}}

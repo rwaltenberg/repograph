@@ -1,0 +1,40 @@
+---
+id: {{id}}
+kind: {{kind}}
+severity: {{severity}}
+source_files:
+{{#each source_files}}
+  - path: {{path}}
+    {{#if symbol}}symbol: {{symbol}}{{/if}}
+    {{#if line_range}}line_range: {{line_range}}{{/if}}
+    hash: sha256:{{hash}}
+{{/each}}
+contributors:
+{{#each contributors}}
+  - name: {{name}}
+    date: {{date}}
+    role: {{role}}
+{{/each}}
+---
+
+# [{{kind}}] {{statement}}
+
+{{short_prose_explanation}}
+
+## Correct
+
+```{{language}}
+{{correct_example_from_real_file}}
+```
+
+Source: `{{correct_example_source}}`
+
+## Incorrect
+
+```{{language}}
+{{synthetic_counter_example}}
+```
+
+## Why
+
+{{reason}}
