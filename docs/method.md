@@ -35,4 +35,4 @@ Knowledge is organized as atomic notes (Zettelkasten), linked into Maps of Conte
 - Schema-enforcing hooks on every write. Adds friction; contributors can verify by running `/repograph-verify`.
 - The full 6-Rs pipeline (Record / Reduce / Reflect / Reweave / Verify / Rethink). We use the ideas (especially Verify) without wiring them as distinct commands.
 
-Credit where it's due: the underlying insight that *conversation + subagent isolation + atomic wiki-linked markdown* is the right substrate for Claude Code knowledge systems came from ArsContexta. `repograph` is a narrow application of that insight to codebases.
+Credit where it's due: the underlying insight that *conversation + subagent isolation + atomic wiki-linked markdown* is the right substrate for agent-facing knowledge systems came from ArsContexta. `repograph` is a narrow application of that insight to codebases.

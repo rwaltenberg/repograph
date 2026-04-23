@@ -134,4 +134,4 @@ If any `drifted` or `missing` exist, add: "Re-ground affected docs by re-reading
 
 If everything is `ok`, exit cleanly with the all-green summary and no [stale] markers touched.
 
-If drift found, exit non-zero-equivalent (in a Claude Code command context, that just means the summary flags the drift and the report file is written). CI integration can parse the summary.
+If drift found, flag the drift in the summary and write the report file. In a shell/CI context, exit non-zero so automation can detect it. In an agent slash-command context, the summary and report file are the signal; the user can act on them.

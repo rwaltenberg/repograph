@@ -2,48 +2,63 @@
 
 > Codebase knowledge vaults for coding agents. Conversation-driven generator, auto-activating consumer skill, drift-aware by design.
 
-Coding agents work better when they have a map of the codebase they're working on — the invariants, the architectural rules, the "why" behind the code that lives in people's heads rather than in the source. `repograph` is a Claude Code plugin that helps a team author that map quickly and keep it current.
+Coding agents work better when they have a map of the codebase they're working on — the invariants, the architectural rules, the "why" behind the code that lives in people's heads rather than in the source. `repograph` is a set of agent skills plus a drift-detection command that helps a team author that map quickly and keep it current.
 
-Inspired by [ArsContexta](https://github.com/agenticnotetaking/arscontexta) — a conversation-driven second-brain generator for personal knowledge. `repograph` ports the same method (atomic concept docs, Maps of Content, wiki-links, subagent isolation on large vaults) from personal-KM to codebase context.
+Works with any agent that reads the [open agent skills](https://github.com/vercel-labs/skills) format — Claude Code, Cursor, Codex, Aider, and others.
+
+Inspired by [ArsContexta](https://github.com/agenticnotetaking/arscontexta) — a conversation-driven second-brain generator. `repograph` ports the same method (atomic concept docs, Maps of Content, wiki-links, subagent isolation on large vaults) from personal-KM to codebase context.
 
 ## What you get
 
 - A **generator skill** (`generate-repograph`) that walks a contributor through a conversation and produces a `.repograph/` vault in their repo.
-- A **consumer skill** (`using-repograph`) that helps Claude Code navigate the vault when working in a repo that has one.
-- A **verify command** (`/repograph-verify`) that detects drift between vault claims and current code.
+- A **consumer skill** (`using-repograph`) that tells the agent how to navigate the vault when working in a repo that has one — load the hub first, follow wiki-links on demand, honor invariants, surface verification markers rather than guess.
+- A **verify workflow** (`repograph-verify`) that detects drift between vault claims and current code.
 - A lean vault format: plain markdown, wiki-linked, agent-agnostic.
 
 ## Install
 
-In Claude Code:
+### Default — any agent, via `npx skills`
+
+```bash
+# Install both skills
+npx skills add rwaltenberg/repograph
+
+# Or install just one
+npx skills add rwaltenberg/repograph --skill using-repograph       # consumer only
+npx skills add rwaltenberg/repograph --skill generate-repograph    # generator only
+```
+
+This fetches SKILL.md files and drops them into your agent's skills directory (e.g., `.claude/skills/`, `.agents/skills/`, or whichever path your agent uses).
+
+### Alternative — Claude Code plugin marketplace
+
+If you're on Claude Code, you can install the full bundle (skills + slash commands) through the plugin system:
 
 ```
 /plugin marketplace add rwaltenberg/repograph
 /plugin install repograph@repograph
 ```
 
-The first command registers this repo as a marketplace; the second installs the plugin from it. (`repograph@repograph` is `<plugin-name>@<marketplace-name>` — both happen to be "repograph" since this repo hosts a single plugin and uses itself as the marketplace.)
+This gets you the skills plus the `/repograph-verify` slash command registered natively.
 
 ## Use it
 
 **Generate a vault in your repo:**
 
-```bash
-cd ~/dev/your-repo
-claude
-```
+In an agent session inside your repo, ask the agent to run the generator:
 
-Then in Claude Code: `/generate-repograph`. Claude walks you through an interview; the vault lands under `.repograph/`.
+> "Run generate-repograph"
+
+The skill walks you through an interview; the vault lands under `.repograph/`.
 
 **Re-run with a different contributor (enhance mode):**
 
-`/generate-repograph` again in the same repo. Claude detects the existing vault, offers `enhance` mode by default, and lets the new contributor add depth where they know more than the first pass.
+Run the generator again in the same repo. It detects the existing vault, offers `enhance` mode by default, and lets a different contributor add depth where they know more than the first pass.
 
 **Check for drift:**
 
-```
-/repograph-verify
-```
+- **Claude Code:** `/repograph-verify` (available as a slash command if you installed via the marketplace route).
+- **Other agents:** ask the agent to follow the instructions in `commands/repograph-verify.md`.
 
 Walks the vault, checks each citation against the current code, writes `.repograph/drift-report.md`.
 

@@ -175,4 +175,4 @@ The `/repograph-verify` command rehashes and compares.
 - No auto-regen on drift — reporter only.
 - No concurrent multi-contributor runs (first wins until they finish).
 - No cross-repo vault linking.
-- Consumer skill is Claude Code-only; Codex / Gemini / Cursor consumers are cheap follow-ups but not shipped in V0.1.
+- Some SKILL.md body wording (e.g., references to "the Agent tool" for subagent dispatch) is written in Claude Code terminology. Other agents can follow the same instructions but the phrasing may need light adaptation. The vault format itself is fully agent-agnostic.
