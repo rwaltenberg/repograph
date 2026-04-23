@@ -76,9 +76,17 @@ Detect these files at repo root, in order:
 
 For each that exists, patch it:
 - Check if the existing file contains the string "repograph" — if yes, skip (idempotent).
-- If no, append the pointer stanza from the interview script Phase 9.
+- If no, append the pointer stanza from the interview script Phase 9. The stanza contains conditional sections for authors and reviewers — both roles hit the same file.
 
-If NONE exist, create `AGENTS.md` with the stanza as its whole content.
+**Exception: `.github/copilot-instructions.md`** gets a one-line pointer to `AGENTS.md` instead of the full stanza:
+
+```markdown
+Refer to [AGENTS.md](../AGENTS.md) for all repo instructions.
+```
+
+This keeps all instructions canonical in `AGENTS.md` with no duplication drift. If `AGENTS.md` does not exist, create it (see below) before patching `.github/copilot-instructions.md`.
+
+If NONE of the pointer files exist, create `AGENTS.md` with the full stanza as its whole content.
 
 Record patched files in `.repograph/config.yml`:
 

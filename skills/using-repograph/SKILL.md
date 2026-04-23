@@ -75,6 +75,35 @@ The vault can be wrong — code moves faster than docs. If you read source and s
 
 Never pretend the vault is correct to avoid the friction. Staleness surfaced is the vault working as intended.
 
+## When you're about to change load-bearing code (keep the vault fresh)
+
+The vault's value is proportional to how fresh it is. When you make changes to a repo with a `.repograph/` vault, follow this protocol:
+
+### Step 1 — Check which vault docs cite the file you're about to modify
+
+Before touching a file, grep `.repograph/` for its path:
+
+```bash
+grep -rln "<relative/path/to/file>" .repograph/
+```
+
+Note any concept, invariant, task, or domain docs that reference it. These are candidates for updating.
+
+### Step 2 — Make the change
+
+### Step 3 — Update or flag affected docs
+
+For each affected vault doc:
+
+- **If the change invalidates a claim in the doc** (type shape changed, invariant violated, symbol renamed, file path moved) — update the doc in the same change. This includes updating `source_files` entries with new paths / symbols / line ranges / hashes as needed, and bumping `last_checked:` to today's date.
+- **If updating the doc is out of scope for this PR** — append a `[stale]` tag at the top of the doc's body (right after the frontmatter) and surface to the user: "`.repograph/concepts/<id>.md` is now stale because of this change; needs a follow-up PR to re-ground."
+
+Never leave silent drift. A vault that lies is worse than no vault.
+
+### Step 4 — Run `/repograph-verify`
+
+After the change, run `/repograph-verify`. Any `drifted` or `missing` entries in the report that you did NOT mark `[stale]` or did NOT update are a problem — resolve them before considering the change complete.
+
 ## Anti-patterns to avoid
 
 - **Reading every file in `.repograph/` before starting.** The vault is designed for on-demand traversal. Eager loading burns context.

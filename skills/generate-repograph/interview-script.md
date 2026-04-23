@@ -148,10 +148,31 @@ For each that exists, check if the pointer stanza is already present (search for
 
 ## Repository knowledge vault
 
-This repo uses [repograph](https://github.com/rwaltenberg/repograph). Knowledge vault at `.repograph/`. Entry point: `.repograph/hub.md`. Consumer skill (if installed) auto-activates.
+This repo uses [repograph](https://github.com/rwaltenberg/repograph). Knowledge vault at `.repograph/`. Entry point: `.repograph/hub.md`.
+
+### If you're authoring code in this repo
+
+- Read `.repograph/hub.md` before non-trivial changes.
+- Honor hard invariants under `.repograph/invariants/` — they are blocking.
+- If you modify a file cited in any `.repograph/` doc, update that doc in the same change. If the update is out of scope for this PR, append a `[stale]` tag to the affected doc's body and surface to the reviewer.
+- Run `/repograph-verify` after changes that touch load-bearing code.
+
+### If you're reviewing code in this repo
+
+- If the PR modifies any file cited in `.repograph/` and does not update the corresponding concept/invariant doc — flag it. The author should either update the doc, add a `[stale]` tag, or justify why the citation is still accurate.
+- If the PR violates any hard invariant under `.repograph/invariants/` (kind: `never`/`must`, severity: `hard`) — block merge.
+- When drift shows up in `.repograph/drift-report.md`, call it out.
 ```
 
 If none of the instruction files exist, create `AGENTS.md` with the stanza as its initial content.
+
+**`.github/copilot-instructions.md` exception:** instead of the full stanza, write a one-line pointer so all instructions stay canonical in `AGENTS.md`:
+
+```markdown
+Refer to [AGENTS.md](../AGENTS.md) for all repo instructions.
+```
+
+This avoids duplication drift between the author-facing file and the reviewer-facing file.
 
 Record patched files in `.repograph/config.yml` under `pointer_files`.
 
