@@ -15,9 +15,14 @@ Inspired by [ArsContexta](https://github.com/agenticnotetaking/arscontexta) — 
 
 ## Install
 
-```bash
-claude-code plugin install https://github.com/rwaltenberg/repograph
+In Claude Code:
+
 ```
+/plugin marketplace add rwaltenberg/repograph
+/plugin install repograph@repograph
+```
+
+The first command registers this repo as a marketplace; the second installs the plugin from it. (`repograph@repograph` is `<plugin-name>@<marketplace-name>` — both happen to be "repograph" since this repo hosts a single plugin and uses itself as the marketplace.)
 
 ## Use it
 

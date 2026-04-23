@@ -1,0 +1,22 @@
+{
+  "name": "repograph",
+  "owner": {
+    "name": "rwaltenberg"
+  },
+  "plugins": [
+    {
+      "name": "repograph",
+      "source": "./",
+      "description": "Generate and maintain knowledge vaults for codebases so coding agents work better. Conversation-driven generator + auto-activating consumer skill + drift-detection verify command.",
+      "version": "0.1.0",
+      "author": {
+        "name": "rwaltenberg"
+      },
+      "homepage": "https://github.com/rwaltenberg/repograph",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/rwaltenberg/repograph.git"
+      }
+    }
+  ]
+}

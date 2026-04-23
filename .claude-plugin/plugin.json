@@ -6,15 +6,8 @@
     "name": "rwaltenberg"
   },
   "homepage": "https://github.com/rwaltenberg/repograph",
-    "repository": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/rwaltenberg/repograph.git"
-  },
-  "skills": [
-    "skills/generate-repograph",
-    "skills/using-repograph"
-  ],
-  "commands": [
-    "commands/repograph-verify.md"
-  ]
+  }
 }
