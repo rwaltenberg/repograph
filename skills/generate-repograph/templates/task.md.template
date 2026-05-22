@@ -1,6 +1,5 @@
 ---
 id: {{id}}
-title: {{title}}
 applies_to:
 {{#each domains}}
   - {{id}}

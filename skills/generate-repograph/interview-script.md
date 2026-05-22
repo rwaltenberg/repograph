@@ -33,6 +33,7 @@ Record today's date.
 ## Phase 1 — bootstrap (silent)
 
 Read the following files if they exist at the target repo root:
+
 - `AGENTS.md`
 - `CLAUDE.md`
 - `README.md`
@@ -64,6 +65,7 @@ Emit `hub.md` with the domain list and emit one skeleton `domains/<id>.md` per d
 For each domain, ask: "Walk me through the {domain} domain. What are the main pieces? What does an agent need to know to work there?"
 
 As the interviewee describes concepts:
+
 - Record each concept with an ID.
 - Read the relevant source files (ask the interviewee to name files or find them via grep).
 - Pull types, interfaces, function signatures directly from code into the concept doc's "Shape" section with `path#symbol` or `path:line-line` citations.
@@ -80,6 +82,7 @@ Emit `concepts/<id>.md` per concept. Link concept docs from the domain MOC. Upda
 Ask: "What should agents never do in this repo? What must they always do? Think of rules you've had to explain to someone new, or bugs you've fixed more than once. Rules like 'don't import X at module level,' 'always use Y for server state,' etc."
 
 For each invariant:
+
 - Record kind (`must` / `never` / `prefer` / `avoid`) and severity (`hard` / `soft`).
 - Ask for a concrete example of correct usage — read it from source, cite path + symbol/line.
 - Compute content hash.
@@ -101,6 +104,7 @@ In enhance mode, replace the linear Phase 4–5 walk with a menu:
 (f) Done for now."
 
 Per selection:
+
 - Show the existing content in full.
 - Ask for additions, corrections, or verifications.
 - For verifications: "Can you confirm this claim? y/n/partial." If `y`, upgrade `status` from `needs-review`/`unverified` to `verified`; append contributor to `contributors:`. If `n`, ask for the correct version and update. If `partial`, leave marker, append a note.
@@ -114,6 +118,7 @@ Loop until user picks (f).
 Ask: "What will agents commonly be asked to do in this repo? E.g., 'add a new filter,' 'add a new API endpoint,' 'wire up a new map layer.' Aim for 3–6 common task patterns."
 
 Per task:
+
 - Record ID and title.
 - Ask: "What files does this touch?" "What order?" "What invariants apply?"
 - Emit `tasks/<id>.md` with steps, file list, invariant wiki-links.
@@ -125,6 +130,7 @@ If `gh` CLI is available AND the repo is on GitHub:
 Run: `gh pr list --limit 30 --state merged --json number,title,body,mergedAt`
 
 For each PR, skim the body for:
+
 - Explanations of *why* a change was made
 - Mentions of bugs that drove a design
 - Invariants the PR establishes or violates
@@ -136,6 +142,7 @@ If `gh` is not available or the repo isn't on GitHub: skip the phase cleanly, no
 ## Phase 9 — pointer-file patching
 
 Detect root instruction files in precedence order:
+
 1. `AGENTS.md`
 2. `CLAUDE.md`
 3. `GEMINI.md`
@@ -181,6 +188,7 @@ Record patched files in `.repograph/config.yml` under `pointer_files`.
 Stage all files with `git add`. Show the user a summary of what was created:
 
 "Summary:
+
 - N files under `.repograph/` (hub + N domain MOCs + N concepts + N invariants + N tasks + config)
 - M files patched at repo root (pointer stanzas added)
 

@@ -1,6 +1,5 @@
 ---
 id: {{id}}
-title: {{title}}
 domain: {{domain}}
 status: {{status}}
 source_files:

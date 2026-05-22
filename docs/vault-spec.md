@@ -4,7 +4,7 @@ The vault is plain markdown under `.repograph/` at the target repo root. Agent-a
 
 ## File layout
 
-```
+```text
 .repograph/
 ├── hub.md
 ├── config.yml
@@ -39,6 +39,7 @@ pointer_files:
 Entry point. Agents read this before any non-trivial code work.
 
 Required sections:
+
 - **What this repo is** — one paragraph.
 - **Domains** — bulleted list of `[[domains/<id>]]` links with one-line descriptions.
 - **Start here for common tasks** — optional, links to `[[tasks/<id>]]`.
@@ -48,10 +49,10 @@ Required sections:
 ## Domain MOC (`domains/<id>.md`)
 
 Frontmatter:
+
 ```yaml
 ---
 id: data
-title: Data Layer
 contributors:
   - name: <contributor>
     date: YYYY-MM-DD
@@ -60,6 +61,7 @@ contributors:
 ```
 
 Body:
+
 - **What's in this domain** — paragraph.
 - **Concepts** — bulleted list of `[[concepts/<id>]]` links.
 - **Invariants** — bulleted list of `[[invariants/<id>]]` links scoped to this domain.
@@ -68,10 +70,10 @@ Body:
 ## Concept doc (`concepts/<id>.md`)
 
 Frontmatter:
+
 ```yaml
 ---
 id: data-store
-title: dataStore
 domain: data
 status: verified            # verified | unverified | needs-review
 source_files:
@@ -90,6 +92,7 @@ contributors:
 ```
 
 Body sections:
+
 1. `# <title>`
 2. `## What it is` — one-sentence summary, then 1–2 paragraphs.
 3. `## Shape` — types/interfaces from source, with `path#symbol` or `path:line-line` citations.
@@ -103,6 +106,7 @@ Lines per doc: under 200.
 ## Invariant doc (`invariants/<id>.md`)
 
 Frontmatter:
+
 ```yaml
 ---
 id: never-import-mapbox-at-module-level
@@ -120,6 +124,7 @@ contributors:
 ```
 
 Body sections:
+
 1. `# [<kind>] <imperative statement>` — e.g., `# [never] Import Mapbox GL at module level`.
 2. Short prose explaining the rule.
 3. `## Correct` — code example pulled from real file.
@@ -129,10 +134,10 @@ Body sections:
 ## Task stub (`tasks/<id>.md`)
 
 Frontmatter:
+
 ```yaml
 ---
 id: add-a-filter
-title: Add a new filter
 applies_to:
   - <domain-id>
 ---
@@ -163,6 +168,7 @@ Consumer skill is instructed to surface these rather than silently trust them.
 ## Content-hash convention
 
 `hash: sha256:<hex>` stores the SHA256 of the cited region:
+
 - For a symbol citation: the text from the symbol's start line through its end line.
 - For a line-range citation: the text of those lines inclusive.
 - Before hashing: strip trailing whitespace from each line; collapse runs of blank lines to one (via `cat -s`). This suppresses cosmetic-change noise.

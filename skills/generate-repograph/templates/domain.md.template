@@ -1,6 +1,5 @@
 ---
 id: {{id}}
-title: {{title}}
 contributors:
 {{#each contributors}}
   - name: {{name}}

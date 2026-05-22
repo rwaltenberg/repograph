@@ -34,7 +34,7 @@ This fetches SKILL.md files and drops them into your agent's skills directory (e
 
 If you're on Claude Code, you can install the full bundle (skills + slash commands) through the plugin system:
 
-```
+```text
 /plugin marketplace add rwaltenberg/repograph
 /plugin install repograph@repograph
 ```
@@ -64,7 +64,7 @@ Walks the vault, checks each citation against the current code, writes `.repogra
 
 ## Vault layout
 
-```
+```text
 .repograph/
 ├── hub.md              # top-level Map of Content — agents read this first
 ├── config.yml          # vault path + pointer-file list + plugin version

@@ -23,7 +23,7 @@ contributors:
 
 ## Correct
 
-```{{language}}
+```{{#if language}}{{language}}{{else}}text{{/if}}
 {{correct_example_from_real_file}}
 ```
 
@@ -31,7 +31,7 @@ Source: `{{correct_example_source}}`
 
 ## Incorrect
 
-```{{language}}
+```{{#if language}}{{language}}{{else}}text{{/if}}
 {{synthetic_counter_example}}
 ```
 

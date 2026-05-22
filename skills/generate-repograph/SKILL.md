@@ -39,6 +39,7 @@ For every concept, invariant, domain MOC, and task stub you emit:
 1. Compute the content hash for each `source_files` entry. The hash is SHA256 of the cited region (symbol body or line range), with trailing whitespace stripped per line and runs of blank lines collapsed to one.
 
    Use a bash command. Example for a line range:
+
    ```bash
    sed -n '42,68p' src/stores/data-store.ts \
      | sed 's/[[:space:]]*$//' \
@@ -75,6 +76,7 @@ Detect these files at repo root, in order:
 5. `.github/copilot-instructions.md`
 
 For each that exists, patch it:
+
 - Check if the existing file contains the string "repograph" — if yes, skip (idempotent).
 - If no, append the pointer stanza from the interview script Phase 9. The stanza contains conditional sections for authors and reviewers — both roles hit the same file.
 
@@ -104,12 +106,13 @@ git_history_mined: true | false
 Stage everything with `git add`, not `git add -A` (avoid accidentally adding unrelated changes).
 
 Stage:
+
 - `.repograph/` (all files)
 - Any pointer files you patched or created (`AGENTS.md`, etc.)
 
 Show the user a summary before committing. Ask for commit-message override; default to:
 
-```
+```text
 feat: add repograph knowledge vault (v0, contributor: <name>)
 ```
 
@@ -118,6 +121,7 @@ Do not commit until the user confirms.
 ## If the interview is interrupted
 
 If the user says "pause" or the conversation stops:
+
 - Do NOT leave partial files uncommitted in the vault; either finish the current phase or revert in-progress writes.
 - Tell the user they can re-run `/generate-repograph` later; it will detect the vault and offer enhance mode.
 

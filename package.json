@@ -1,0 +1,22 @@
+{
+  "name": "repograph",
+  "version": "0.1.0",
+  "description": "Codebase knowledge vaults for coding agents. Conversation-driven generator, auto-activating consumer skill, drift-aware by design.",
+  "private": true,
+  "scripts": {
+    "lint": "markdownlint-cli2 \"**/*.md\" \"#node_modules\"",
+    "lint:fix": "markdownlint-cli2 --fix \"**/*.md\" \"#node_modules\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rwaltenberg/repograph.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rwaltenberg/repograph/issues"
+  },
+  "homepage": "https://github.com/rwaltenberg/repograph#readme",
+  "license": "ISC",
+  "devDependencies": {
+    "markdownlint-cli2": "^0.22.1"
+  }
+}

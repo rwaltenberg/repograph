@@ -27,6 +27,7 @@ Run one of four checks:
 ### 1. File missing
 
 If `<repo-root>/<path>` does not exist:
+
 - Check `git log --follow --name-only --format= -- <path> | head -20` to see if the file was renamed/moved.
 - If the file appears in git history under a new path → classify as **`moved`** with `new_path: <path>`.
 - If it does not → classify as **`missing`**.
@@ -51,6 +52,7 @@ sed -n '42,68p' <path> | sed 's/[[:space:]]*$//' | cat -s
 ```
 
 Compute SHA256 of the normalized region:
+
 ```bash
 <normalized_region> | sha256sum | cut -d' ' -f1
 ```
@@ -118,7 +120,7 @@ Also mark drifted/missing docs with a `[stale]` tag at the top of the body (afte
 
 Emit to the user:
 
-```
+```text
 repograph-verify: checked N docs, M citations.
   ok: <count>
   moved: <count>
